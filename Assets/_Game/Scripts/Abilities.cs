@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Abilities : MonoBehaviour
-{   
+{
     Movement movement;
     [SerializeField] private Animator anim;
     [SerializeField] private Camera cameraMain;
@@ -169,7 +169,7 @@ public class Abilities : MonoBehaviour
                 // stop moving
                 // skill 1
                 anim.SetBool("isSkill1", true);
-                
+
                 movement = GetComponent<Movement>();
                 movement.StopMoving();
 
@@ -213,6 +213,19 @@ public class Abilities : MonoBehaviour
             ability2RangeIndicator.enabled = false;
 
             Cursor.visible = true;
+
+            anim.SetBool("isSkill2", true);
+
+            movement = GetComponent<Movement>();
+            movement.StopMoving();
+
+            Vector3 direction = (postion - transform.position).normalized;
+
+            StartCoroutine(skillManager.Skill2Fire(postion));
+
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = targetRotation;
+
         }
     }
 
