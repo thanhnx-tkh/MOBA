@@ -86,6 +86,7 @@ public class Movement : MonoBehaviour
         agent.stoppingDistance = stoppingDistance;
 
         Rotation(targetEnemy.transform.position);
+        if(targetEnemy == null) return;
         hmScript.SelectedHighlight();
     }
     public void Rotation(Vector3 lookAtPosition)

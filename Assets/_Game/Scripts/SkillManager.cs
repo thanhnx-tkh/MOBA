@@ -12,14 +12,14 @@ public class SkillManager : MonoBehaviour
 
     public IEnumerator Skill1Fire(Vector3 direction, Transform pointFire)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.75f);
 
         Bullet bullet = Instantiate(prefabBullet1);
         bullet.transform.position = pointFire.position;
 
         bullet.OnInit(direction);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         anim.SetBool("isSkill1", false);
         movement = GetComponent<Movement>();
         movement.ActiveMoving();
@@ -33,7 +33,7 @@ public class SkillManager : MonoBehaviour
         bullet2.transform.position = position;
         bullet2.OnInit();
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         anim.SetBool("isSkill2", false);
 

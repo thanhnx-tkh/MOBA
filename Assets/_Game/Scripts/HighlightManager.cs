@@ -44,6 +44,7 @@ public class HighlightManager : MonoBehaviour
     }
     public void SelectedHighlight()
     {
+        if(highlightedObj == null) return;
         if (highlightedObj.CompareTag("Enemy"))
         {
 

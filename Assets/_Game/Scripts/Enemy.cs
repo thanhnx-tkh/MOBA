@@ -89,7 +89,6 @@ public class Enemy : MonoBehaviour
     public void Animation()
     {
         float speed = agent.velocity.magnitude / agent.speed;
-        Debug.Log("" + speed);
         anim.SetFloat("Speed", speed, motionSmoothTime, Time.deltaTime);
     }
 }

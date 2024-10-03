@@ -5,7 +5,7 @@ using UnityEngine;
 public class ZoneAttackEnemy : MonoBehaviour
 {
     public GameObject player;
-
+    public float disPlayerToAttack;
     public GameObject target;
     
     private void Start() {
@@ -14,7 +14,7 @@ public class ZoneAttackEnemy : MonoBehaviour
 
     private void Update() {
         if(player == null) return;
-        if (Vector3.Distance(transform.position, player.transform.position) <= 10f)
+        if (Vector3.Distance(transform.position, player.transform.position) <= disPlayerToAttack)
             target = player;
         else {
             target = null;

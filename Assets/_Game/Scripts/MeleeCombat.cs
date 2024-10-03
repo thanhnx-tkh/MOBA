@@ -49,6 +49,7 @@ public class MeleeCombat : MonoBehaviour
     //CALL IN THE ANIMATION EVENT
     private void MeleeAttack()
     {
+        if(targetEnemy == null) return; 
         stats.TakeDamage(targetEnemy, stats.damage);
         //Set the next attack time
         nextAttackTime = Time.time + attackInterval;

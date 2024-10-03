@@ -108,7 +108,7 @@ public class Abilities : MonoBehaviour
 
     private void Ability2Canvas()
     {
-        int layerMask = ~LayerMask.GetMask("Player");
+        int layerMask = LayerMask.GetMask("Ground");
 
         if (Physics.Raycast(ray, out hit, Mathf.Infinity, layerMask))
         {
