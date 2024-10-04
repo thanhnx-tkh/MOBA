@@ -16,6 +16,7 @@ public class HighlightManager : MonoBehaviour
 
     private void Update()
     {
+        if(GameManager.IsState(GameState.GamePlay) != true) return;
         HoverHighlight();
     }
     public void HoverHighlight()

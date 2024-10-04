@@ -35,12 +35,25 @@ public class Stats : MonoBehaviour
 
     public void TakeDamage(GameObject target, float damageAmount)
     {
+        if(target == null) return;
         Stats targetStats = target.GetComponent<Stats>();
         targetStats.targetHealth -= damageAmount;
         if (targetStats.targetHealth <= 0)
         {
-            Destroy(target.gameObject);
-            CheckIfPlayerDead();
+            if(target.CompareTag("Player")){
+                Debug.Log("Player die");
+                UIManager.Ins.CloseAll();
+                UIManager.Ins.OpenUI<Lose>();
+                
+            }
+            else if(target.CompareTag("Enemy")){
+                Debug.Log("Enemy die");
+                Enemy enemy = target.GetComponent<Enemy>();
+                GameManager.Ins.RemoveEnemytoList(enemy);
+            }
+            //Destroy(target.gameObject);
+            StartCoroutine(Death(target.gameObject));
+            //CheckIfPlayerDead();
         }
         else if (targetStats.damageCoroutine == null)
         {
@@ -48,13 +61,27 @@ public class Stats : MonoBehaviour
         }
 
     }
+    IEnumerator Death(GameObject gameObject){
+        yield return new WaitForSeconds(0.5f);
+        Destroy(gameObject);
+    }
     public void TakeDamage(float damageAmount)
     {
         targetHealth -= damageAmount;
         if (targetHealth <= 0)
         {
-            Destroy(gameObject);
-            CheckIfPlayerDead();
+            if(gameObject.CompareTag("Player")){
+                UIManager.Ins.CloseAll();
+                UIManager.Ins.OpenUI<Lose>();
+                Debug.Log("Player die");
+            }
+            else if(gameObject.CompareTag("Enemy")){
+                Debug.Log("Enemy die");
+                Enemy enemy = GetComponent<Enemy>();
+                GameManager.Ins.RemoveEnemytoList(enemy);
+            }
+            StartCoroutine(Death(gameObject));
+            //CheckIfPlayerDead();
         }
         else if (damageCoroutine == null)
         {
@@ -93,7 +120,7 @@ public class Stats : MonoBehaviour
     }
     private void UpdateHealthUI()
     {
-        healthUI.Update2DSlider(health, currentHealth); 
+        healthUI.Update2DSlider(health, currentHealth);
         healthUI.Update3DSlider(currentHealth);
     }
 }

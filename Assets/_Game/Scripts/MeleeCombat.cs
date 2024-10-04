@@ -22,6 +22,7 @@ public class MeleeCombat : MonoBehaviour
 
     private void Update()
     {
+        if(GameManager.IsState(GameState.GamePlay) != true) return;
         //Calculates the attack speed and interval between each attack 
         attackInterval = stats.attackSpeed / ((500 + stats.attackSpeed) * 0.01f);
         targetEnemy = moveScript.targetEnemy;
@@ -32,29 +33,27 @@ public class MeleeCombat : MonoBehaviour
     }
     private IEnumerator MeleeAttackInterval()
     {
-
         performMeleeAttack = false;
-        //Trigger the animation for attacking 
         anim.SetBool("isAttacking", true);
-        // Wait based on the attack speed / interval value
+        StartCoroutine(MeleeAttack());
         yield return new WaitForSeconds(attackInterval);
-        //Checking if the Enemy is still Alive.
         if (targetEnemy = null)
         {
-            //Stopping the animation bool and letting it go back to being able to attack
             anim.SetBool("isAttacking", false);
             performMeleeAttack = true;
         }
     }
     //CALL IN THE ANIMATION EVENT
-    private void MeleeAttack()
+    private IEnumerator MeleeAttack()
     {
-        if(targetEnemy == null) return; 
+        yield return new WaitForSeconds(0.18f);
+        if(targetEnemy == null) yield return null; 
         stats.TakeDamage(targetEnemy, stats.damage);
         //Set the next attack time
         nextAttackTime = Time.time + attackInterval;
         performMeleeAttack = true;
-        //Stop calling the attack animation 
+        //Stop calling the attack animation
+        yield return new WaitForSeconds(0.5f);
         anim.SetBool("isAttacking", false);
     }
 }

@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if(GameManager.IsState(GameState.GamePlay) != true) return;
         Animation();
         attackInterval = stats.attackSpeed / ((500 + stats.attackSpeed) * 0.01f);
         targetEnemy = zoneAttack.target;

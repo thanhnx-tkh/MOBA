@@ -78,6 +78,7 @@ public class Abilities : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameManager.IsState(GameState.GamePlay) != true) return;
         ray = cameraMain.ScreenPointToRay(Input.mousePosition);
 
         Ability1Input();
@@ -126,9 +127,10 @@ public class Abilities : MonoBehaviour
     }
     private void Ability3Canvas()
     {
+        int layerMask = LayerMask.GetMask("Ground");
         if (ability3Cone.enabled)
         {
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity,layerMask))
             {
                 postion = new Vector3(hit.point.x, hit.point.y, hit.point.z);
             }
@@ -219,9 +221,9 @@ public class Abilities : MonoBehaviour
             movement = GetComponent<Movement>();
             movement.StopMoving();
 
-            Vector3 direction = (postion - transform.position).normalized;
+            Vector3 direction = (ability2Canvas.transform.position - transform.position).normalized;
 
-            StartCoroutine(skillManager.Skill2Fire(postion));
+            StartCoroutine(skillManager.Skill2Fire(ability2Canvas.transform.position));
 
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = targetRotation;
@@ -250,6 +252,30 @@ public class Abilities : MonoBehaviour
             currentAbility3Cooldown = ability3Cooldown;
             ability3Canvas.enabled = false;
             ability3Cone.enabled = false;
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity))
+            {
+                // stop moving
+                // skill 1
+                anim.SetBool("isSkill1", true);
+
+                movement = GetComponent<Movement>();
+                movement.StopMoving();
+
+                Vector3 mousePos = new Vector3(hit.point.x, pointFire.position.y, hit.point.z);
+
+                Vector3 direction = (mousePos - pointFire.position).normalized;
+
+                Quaternion targetRotation = Quaternion.LookRotation(direction);
+                transform.rotation = targetRotation;
+
+                mousePos = new Vector3(hit.point.x, pointFire.position.y, hit.point.z);
+
+                direction = (mousePos - pointFire.position).normalized;
+
+                StartCoroutine(skillManager.Skill3Fire(direction, pointFire));
+            }
+
         }
     }
 

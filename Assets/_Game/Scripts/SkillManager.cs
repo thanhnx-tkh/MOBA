@@ -9,6 +9,7 @@ public class SkillManager : MonoBehaviour
     [SerializeField] private Animator anim;
     public Bullet prefabBullet1;
     public Bullet2 prefabBullet2;
+    public Bullet3 prefabBullet3;
 
     public IEnumerator Skill1Fire(Vector3 direction, Transform pointFire)
     {
@@ -19,7 +20,7 @@ public class SkillManager : MonoBehaviour
 
         bullet.OnInit(direction);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         anim.SetBool("isSkill1", false);
         movement = GetComponent<Movement>();
         movement.ActiveMoving();
@@ -33,10 +34,28 @@ public class SkillManager : MonoBehaviour
         bullet2.transform.position = position;
         bullet2.OnInit();
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
 
         anim.SetBool("isSkill2", false);
 
+        movement = GetComponent<Movement>();
+        movement.ActiveMoving();
+    }
+
+    public IEnumerator Skill3Fire(Vector3 direction, Transform pointFire)
+    {
+        yield return new WaitForSeconds(0.75f);
+
+        Bullet3 bullet3 = Instantiate(prefabBullet3);
+        bullet3.transform.position = pointFire.position;
+
+        bullet3.OnInit();
+
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        bullet3.transform.rotation = targetRotation;
+
+        yield return new WaitForSeconds(0.3f);
+        anim.SetBool("isSkill1", false);
         movement = GetComponent<Movement>();
         movement.ActiveMoving();
     }

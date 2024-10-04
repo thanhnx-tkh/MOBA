@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class Movement : MonoBehaviour
 {
-
+    [SerializeField] private ParticleSystem clickEffect;
     [SerializeField] private NavMeshAgent agent;
     public float rotateSpeedMovement = 0.05f;
     private float rotateVelocity;
@@ -27,12 +27,15 @@ public class Movement : MonoBehaviour
         hmScript = GetComponent<HighlightManager>();
         agent = GetComponent<NavMeshAgent>();
     }
+    private void Start() {
+        clickEffect.Stop();
+    }
     private void Update()
     {
+        if(GameManager.IsState(GameState.GamePlay) != true) return;
         Animation();
         Move();
     }
-
     public void Animation()
     {
         float speed = agent.velocity.magnitude / agent.speed;
@@ -52,6 +55,8 @@ public class Movement : MonoBehaviour
                 if (hit.collider.tag == "Ground")
                 {
                     MoveToPosition(hit.point);
+                    clickEffect.transform.position = hit.point + new Vector3(0, 0.1f, 0);
+					clickEffect.Play();
                 }
                 else if (hit.collider.CompareTag("Enemy"))
                 {
@@ -106,4 +111,5 @@ public class Movement : MonoBehaviour
         isMoving = true;
         agent.isStopped = false;
     }
+
 }
