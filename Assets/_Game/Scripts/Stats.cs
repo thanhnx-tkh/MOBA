@@ -35,18 +35,21 @@ public class Stats : MonoBehaviour
 
     public void TakeDamage(GameObject target, float damageAmount)
     {
-        if(target == null) return;
+        if (target == null) return;
         Stats targetStats = target.GetComponent<Stats>();
         targetStats.targetHealth -= damageAmount;
         if (targetStats.targetHealth <= 0)
         {
-            if(target.CompareTag("Player")){
+            if (target.CompareTag("Player"))
+            {
                 Debug.Log("Player die");
                 UIManager.Ins.CloseAll();
                 UIManager.Ins.OpenUI<Lose>();
-                
+                GameManager.ChangeState(GameState.Lose);
+
             }
-            else if(target.CompareTag("Enemy")){
+            else if (target.CompareTag("Enemy"))
+            {
                 Debug.Log("Enemy die");
                 Enemy enemy = target.GetComponent<Enemy>();
                 GameManager.Ins.RemoveEnemytoList(enemy);
@@ -61,7 +64,8 @@ public class Stats : MonoBehaviour
         }
 
     }
-    IEnumerator Death(GameObject gameObject){
+    IEnumerator Death(GameObject gameObject)
+    {
         yield return new WaitForSeconds(0.5f);
         Destroy(gameObject);
     }
@@ -70,12 +74,15 @@ public class Stats : MonoBehaviour
         targetHealth -= damageAmount;
         if (targetHealth <= 0)
         {
-            if(gameObject.CompareTag("Player")){
+            if (gameObject.CompareTag("Player"))
+            {
                 UIManager.Ins.CloseAll();
                 UIManager.Ins.OpenUI<Lose>();
+                GameManager.ChangeState(GameState.Lose);
                 Debug.Log("Player die");
             }
-            else if(gameObject.CompareTag("Enemy")){
+            else if (gameObject.CompareTag("Enemy"))
+            {
                 Debug.Log("Enemy die");
                 Enemy enemy = GetComponent<Enemy>();
                 GameManager.Ins.RemoveEnemytoList(enemy);

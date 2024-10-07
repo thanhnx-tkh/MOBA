@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 public enum GameState
 {
     MainMenu,
@@ -15,6 +16,7 @@ public class GameManager : Singleton<GameManager>
 {
     public List<Enemy> enemies;
     public GameObject gamePlayUI;
+    public Text textTotalEnemy;
     private static GameState gameState = GameState.MainMenu;
 
     // Start is called before the first frame update
@@ -35,9 +37,11 @@ public class GameManager : Singleton<GameManager>
     }
     public void RemoveEnemytoList(Enemy enemy)
     {
-
         if (enemies.Contains(enemy))
+        {   
             enemies.Remove(enemy);
+            textTotalEnemy.text = "Total Enemy: " + enemies.Count.ToString();
+        }
     }
 
     public static bool IsState(GameState state)
@@ -58,6 +62,7 @@ public class GameManager : Singleton<GameManager>
         {
             UIManager.Ins.CloseAll();
             UIManager.Ins.OpenUI<Win>();
+            ChangeState(GameState.Win);
         }
     }
 

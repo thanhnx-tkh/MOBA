@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class SkillManager : MonoBehaviour
 {
-    Movement movement;
+    [SerializeField] private Player_Mobile player_Mobile;
+    [SerializeField] private Abilities_Mobile abilities_Mobile;
+
+    [SerializeField] private Movement movement;
 
     [SerializeField] private Animator anim;
     public Bullet prefabBullet1;
@@ -22,8 +25,18 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
         anim.SetBool("isSkill1", false);
-        movement = GetComponent<Movement>();
-        movement.ActiveMoving();
+        if (player_Mobile != null)
+        {
+            player_Mobile.ActiveMoving();
+        }
+        if (abilities_Mobile != null)
+        {
+            abilities_Mobile.isUseSkill = false;
+        }
+        if (movement != null)
+        {
+            movement.ActiveMoving();
+        }
     }
 
     public IEnumerator Skill2Fire(Vector3 position)
@@ -38,8 +51,18 @@ public class SkillManager : MonoBehaviour
 
         anim.SetBool("isSkill2", false);
 
-        movement = GetComponent<Movement>();
-        movement.ActiveMoving();
+        if (player_Mobile != null)
+        {
+            player_Mobile.ActiveMoving();
+        }
+        if (abilities_Mobile != null)
+        {
+            abilities_Mobile.isUseSkill = false;
+        }
+        if (movement != null)
+        {
+            movement.ActiveMoving();
+        }
     }
 
     public IEnumerator Skill3Fire(Vector3 direction, Transform pointFire)
@@ -56,7 +79,17 @@ public class SkillManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
         anim.SetBool("isSkill1", false);
-        movement = GetComponent<Movement>();
-        movement.ActiveMoving();
+        if (player_Mobile != null)
+        {
+            player_Mobile.ActiveMoving();
+        }
+        if (abilities_Mobile != null)
+        {
+            abilities_Mobile.isUseSkill = false;
+        }
+        if (movement != null)
+        {
+            movement.ActiveMoving();
+        }
     }
 }

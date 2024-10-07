@@ -104,12 +104,12 @@ public class Movement : MonoBehaviour
 
     public void StopMoving(){
         isMoving = false;
-        agent.isStopped = true;
+        agent.ResetPath();
     }
 
     public void ActiveMoving(){
         isMoving = true;
-        agent.isStopped = false;
+        agent.ResetPath();
     }
 
 }
