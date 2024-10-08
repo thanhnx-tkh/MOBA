@@ -65,7 +65,7 @@ public class Abilities_Mobile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
         if (GameManager.IsState(GameState.GamePlay) != true) return;
         GetNearestEnemy();
 
@@ -90,11 +90,11 @@ public class Abilities_Mobile : MonoBehaviour
             currentAbility1Cooldown = ability1Cooldown;
 
             player_Mobile = GetComponent<Player_Mobile>();
-            player_Mobile.ActiveMoving();
+            player_Mobile.StopMoving();
 
             // to do : Fire
             anim.SetBool("isSkill1", true);
-            isUseSkill =true;
+            isUseSkill = true;
             Vector3 direction = (targetEnemy.transform.position - pointFire.position).normalized;
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = targetRotation;
@@ -125,10 +125,9 @@ public class Abilities_Mobile : MonoBehaviour
             currentAbility2Cooldown = ability2Cooldown;
 
             anim.SetBool("isSkill2", true);
-            isUseSkill =true;
+            isUseSkill = true;
             player_Mobile = GetComponent<Player_Mobile>();
-            player_Mobile.ActiveMoving();
-
+            player_Mobile.StopMoving();
             Vector3 direction = (targetEnemy.transform.position - transform.position).normalized;
 
             StartCoroutine(skillManager.Skill2Fire(targetEnemy.transform.position));
@@ -165,10 +164,9 @@ public class Abilities_Mobile : MonoBehaviour
             currentAbility3Cooldown = ability3Cooldown;
 
             anim.SetBool("isSkill1", true);
-            isUseSkill =true;
+            isUseSkill = true;
             player_Mobile = GetComponent<Player_Mobile>();
-            player_Mobile.ActiveMoving();
-            Vector3 direction = (targetEnemy.transform.position - pointFire.position).normalized;
+            player_Mobile.StopMoving(); Vector3 direction = (targetEnemy.transform.position - pointFire.position).normalized;
 
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             transform.rotation = targetRotation;

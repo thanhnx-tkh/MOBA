@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 10699200}
   m_Layer: 6
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1660,6 +1660,10 @@ PrefabInstance:
       propertyPath: targetEnemy
       value: 
       objectReference: {fileID: 7035174158241025402}
+    - target: {fileID: 6150517415582273372, guid: a6f788c775e214da2b322e760e58a499, type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 1589245845}
     - target: {fileID: 8368816370589444500, guid: a6f788c775e214da2b322e760e58a499, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -2998,6 +3002,10 @@ PrefabInstance:
       propertyPath: targetEnemy
       value: 
       objectReference: {fileID: 7035174158241025402}
+    - target: {fileID: 6150517415582273372, guid: a6f788c775e214da2b322e760e58a499, type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 1589245845}
     - target: {fileID: 8368816370589444500, guid: a6f788c775e214da2b322e760e58a499, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -5408,6 +5416,10 @@ PrefabInstance:
       propertyPath: targetEnemy
       value: 
       objectReference: {fileID: 7035174158241025402}
+    - target: {fileID: 6150517415582273372, guid: a6f788c775e214da2b322e760e58a499, type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 1589245845}
     - target: {fileID: 8368816370589444500, guid: a6f788c775e214da2b322e760e58a499, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6103,6 +6115,10 @@ PrefabInstance:
       propertyPath: targetEnemy
       value: 
       objectReference: {fileID: 7035174158241025402}
+    - target: {fileID: 6150517415582273372, guid: a6f788c775e214da2b322e760e58a499, type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 1589245845}
     - target: {fileID: 8368816370589444500, guid: a6f788c775e214da2b322e760e58a499, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -6914,6 +6930,10 @@ PrefabInstance:
       propertyPath: targetEnemy
       value: 
       objectReference: {fileID: 7035174158241025402}
+    - target: {fileID: 6150517415582273372, guid: a6f788c775e214da2b322e760e58a499, type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 1589245845}
     - target: {fileID: 8368816370589444500, guid: a6f788c775e214da2b322e760e58a499, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -7573,7 +7593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &709470781
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7592,7 +7612,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -701.23987, y: -457}
+  m_AnchoredPosition: {x: 0, y: -458}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &709470782
@@ -9291,6 +9311,10 @@ PrefabInstance:
       propertyPath: targetEnemy
       value: 
       objectReference: {fileID: 7035174158241025402}
+    - target: {fileID: 6150517415582273372, guid: a6f788c775e214da2b322e760e58a499, type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 1589245845}
     - target: {fileID: 8368816370589444500, guid: a6f788c775e214da2b322e760e58a499, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -11274,6 +11298,10 @@ PrefabInstance:
       propertyPath: targetEnemy
       value: 
       objectReference: {fileID: 7035174158241025402}
+    - target: {fileID: 6150517415582273372, guid: a6f788c775e214da2b322e760e58a499, type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 1589245845}
     - target: {fileID: 8368816370589444500, guid: a6f788c775e214da2b322e760e58a499, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -12370,6 +12398,10 @@ PrefabInstance:
       propertyPath: targetEnemy
       value: 
       objectReference: {fileID: 7035174158241025402}
+    - target: {fileID: 6150517415582273372, guid: a6f788c775e214da2b322e760e58a499, type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 1589245845}
     - target: {fileID: 8368816370589444500, guid: a6f788c775e214da2b322e760e58a499, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -13240,6 +13272,10 @@ PrefabInstance:
       propertyPath: targetEnemy
       value: 
       objectReference: {fileID: 7035174158241025402}
+    - target: {fileID: 6150517415582273372, guid: a6f788c775e214da2b322e760e58a499, type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 1589245845}
     - target: {fileID: 8368816370589444500, guid: a6f788c775e214da2b322e760e58a499, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -17348,7 +17384,7 @@ RectTransform:
   m_Father: {fileID: 631297747}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -22816,6 +22852,10 @@ PrefabInstance:
       propertyPath: targetEnemy
       value: 
       objectReference: {fileID: 7035174158241025402}
+    - target: {fileID: 6150517415582273372, guid: a6f788c775e214da2b322e760e58a499, type: 3}
+      propertyPath: Camera
+      value: 
+      objectReference: {fileID: 1589245845}
     - target: {fileID: 8368816370589444500, guid: a6f788c775e214da2b322e760e58a499, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
