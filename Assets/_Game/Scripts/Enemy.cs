@@ -26,11 +26,19 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if(GameManager.IsState(GameState.GamePlay) != true) return;
+        if (GameManager.IsState(GameState.GamePlay) != true) return;
         Animation();
         attackInterval = stats.attackSpeed / ((500 + stats.attackSpeed) * 0.01f);
         targetEnemy = zoneAttack.target;
-        if (targetEnemy == null) agent.stoppingDistance = 0;
+        if (targetEnemy == null)
+        {
+            // Nếu enemy đã đến gần đích, chọn một điểm đến mới
+            if (!agent.pathPending && agent.remainingDistance <= 1f)
+            {
+                SetNewRandomDestination();
+            }
+        }
+
 
         if (targetEnemy != null && performMeleeAttack && Time.time > nextAttackTime)
         {
@@ -41,6 +49,18 @@ public class Enemy : MonoBehaviour
                 //agent.isStopped = true;
                 StartCoroutine(MeleeAttackInterval());
             }
+        }
+    }
+    void SetNewRandomDestination()
+    {
+        Vector3 randomPoint = Random.insideUnitSphere * 10f; // Lấy một điểm ngẫu nhiên trong vòng cầu bán kính patrolRange
+        randomPoint += transform.position; // Dịch chuyển điểm đó về vị trí của enemy
+
+        NavMeshHit hit;
+        // Tìm vị trí hợp lệ gần randomPoint trên NavMesh
+        if (NavMesh.SamplePosition(randomPoint, out hit, 10f, NavMesh.AllAreas))
+        {
+            agent.SetDestination(hit.position); // Thiết lập điểm đến cho NavMeshAgent
         }
     }
     public IEnumerator MeleeAttackInterval()

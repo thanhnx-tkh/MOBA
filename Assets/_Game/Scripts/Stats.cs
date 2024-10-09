@@ -56,7 +56,6 @@ public class Stats : MonoBehaviour
             }
             //Destroy(target.gameObject);
             StartCoroutine(Death(target.gameObject));
-            //CheckIfPlayerDead();
         }
         else if (targetStats.damageCoroutine == null)
         {
@@ -66,7 +65,9 @@ public class Stats : MonoBehaviour
     }
     IEnumerator Death(GameObject gameObject)
     {
-        yield return new WaitForSeconds(0.5f);
+        gameObject.GetComponent<HealthUI>().Update3DSlider(0);
+        gameObject.GetComponent<Animator>().SetBool("isDie", true);
+        yield return new WaitForSeconds(0.7f);
         Destroy(gameObject);
     }
     public void TakeDamage(float damageAmount)
@@ -88,7 +89,6 @@ public class Stats : MonoBehaviour
                 GameManager.Ins.RemoveEnemytoList(enemy);
             }
             StartCoroutine(Death(gameObject));
-            //CheckIfPlayerDead();
         }
         else if (damageCoroutine == null)
         {

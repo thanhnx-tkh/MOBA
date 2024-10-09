@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeDesSpawn: 2
-  damage: 10
+  damage: 15
 --- !u!1001 &8046813544522920333
 PrefabInstance:
   m_ObjectHideFlags: 0
